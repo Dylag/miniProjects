@@ -1,19 +1,21 @@
-
-#leftDiv{
-    background-color: red;
+:root{
+    --baseMargin:50px;
 }
 
-#rightDiv{
-    background-color: blue;
-}
 
 .column{
     width: 50%;
     float: left;
 }
 
-.row:after{
-    content: "";
-    display: table;
-    clear: both;
+#list{
+    text-align: right;
+    list-style-position: inside;
+    margin-right: var(--baseMargin);
 }
+
+#userInput{
+    margin-left: var(--baseMargin);
+}
+
+

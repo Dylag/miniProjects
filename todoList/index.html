@@ -8,19 +8,23 @@
     </head>
 
     <body>
-
-        <h1>Just heading</h1>
-        <div class="row">
-
-
-            <div class = 'column' id="leftDiv">
-                left div
-            </div>
-
-            <div class = "column" id = "rightDiv">
-                right div
-            </div>
-
+        <div style="text-align: center">
+            <h1>TO-DO list</h1>
         </div>
+
+        <div class="column">
+            <ol id = "list">
+                <li>first item</li>
+            </ol>
+        </div>
+
+        <div class="column">
+            <div id = 'userInterface'>
+                <input type="text" id="userInput">
+                <button onclick="addToList()">add to list</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
     </body>
 </html>
