@@ -1,0 +1,19 @@
+
+#leftDiv{
+    background-color: red;
+}
+
+#rightDiv{
+    background-color: blue;
+}
+
+.column{
+    width: 50%;
+    float: left;
+}
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
