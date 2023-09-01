@@ -2,8 +2,6 @@ package com.example.todolistwebjavarest;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 @RestController
 @RequestMapping(path = "/todo")
@@ -21,9 +19,8 @@ public class TodoController {
     }
 
     @PostMapping
-    public String addTodo(@RequestBody Todo todo){
-        return todo.txt;
-        //service.addTodo(todo);
+    public Todo addTodo(@RequestBody Todo todo){
+        return service.addTodo(todo);
     }
 
 }

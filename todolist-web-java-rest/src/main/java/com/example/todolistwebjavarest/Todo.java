@@ -18,11 +18,38 @@ public class Todo {
     @Column(name = "startdate")
     Date startdate;
 
-    @Column(name = "deadline")
-    Date deadline;
+    @Column(name = "enddate")
+    Date enddate;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public String getTxt() {
+        return txt;
+    }
 
+    public void setTxt(String txt) {
+        this.txt = txt;
+    }
 
+    public Date getStartdate() {
+        return startdate;
+    }
+
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
+    }
+
+    public Date getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
+    }
 }

@@ -12,8 +12,9 @@ public class TodoService {
         this.db = db;
     }
 
-    public void addTodo(Todo newTodo){
+    public Todo addTodo(Todo newTodo){
         db.save(newTodo);
+        return db.getLastTodo();
     }
 
 }

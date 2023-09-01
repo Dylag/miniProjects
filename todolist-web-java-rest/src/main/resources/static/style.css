@@ -1,0 +1,31 @@
+:root{
+    --baseMargin:50px;
+}
+
+
+
+.column{
+    width: 50%;
+    float: left;
+
+    background-color: red;
+}
+
+#list{
+    text-align: right;
+    list-style-position: inside;
+    margin-right: var(--baseMargin);
+}
+
+#table{
+    text-align: center;
+}
+
+#userInput {
+    margin-left: var(--baseMargin);
+}
+
+.idColumn,
+.startDateColumn{
+    background-color: bisque;
+}

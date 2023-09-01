@@ -1,15 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        TO-DO list (1)
+    </title>
+    <link rel = 'stylesheet' href="style.css"/>
+</head>
 
-<html>
-    <head>
-        <title>
-            todo list with db
-        </title>
-    </head>
+<body>
+<div style="text-align: center">
+    <h1>TO-DO list</h1>
+</div>
 
-    <body>
-        <h1>
-            hello world
-        </h1>
-    </body>
+<div class="column">
+    <table id = table>
+        <tr>
+            <td class = "idColumn">id</td>
+            <td class = "textColumn">text</td>
+            <td class = "startDateColumn">start date</td>
+            <td class = "endDateColumn">end date</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>eleejrijokrmhkmjktyejgo</td>
+            <td>2000-01-01</td>
+            <td>2001-01-01</td>
+        </tr>
+    </table>
+
+
+<!--    <ol id = "list">-->
+
+<!--    </ol>-->
+</div>
+
+<div class="column">
+    <div id = 'userInterface'>
+        <input type="text" id="userInput">
+        <button id="123" onclick="addToList()">add to list</button>
+        <input type="date" id ="startDatePicker">
+        <input type="date" id = "endDatePicker">
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>
