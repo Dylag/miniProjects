@@ -3,7 +3,6 @@
 }
 
 
-
 .column{
     width: 50%;
     float: left;
@@ -18,13 +17,26 @@
 
 #table{
     text-align: center;
+
+    margin-right: auto;
+    margin-left: auto;
+
 }
 
 #userInput {
-    margin-left: var(--baseMargin);
+    /*margin-left: var(--baseMargin);*/
+    margin-left: auto;
+    margin-right:auto;
 }
 
 .idColumn,
 .startDateColumn{
     background-color: bisque;
+}
+
+.column * {
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
 }

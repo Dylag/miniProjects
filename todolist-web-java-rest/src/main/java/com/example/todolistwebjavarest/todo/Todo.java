@@ -1,4 +1,4 @@
-package com.example.todolistwebjavarest;
+package com.example.todolistwebjavarest.todo;
 
 import jakarta.persistence.*;
 
@@ -10,13 +10,13 @@ public class Todo {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
     @Column(name = "txt")
-    String txt;
+    private String txt;
 
     @Column(name = "startdate")
-    Date startdate;
+    private Date startdate;
 
     @Column(name = "enddate")
     Date enddate;

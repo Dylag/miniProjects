@@ -1,4 +1,4 @@
-package com.example.todolistwebjavarest;
+package com.example.todolistwebjavarest.todo;
 
 
 import org.springframework.stereotype.Service;

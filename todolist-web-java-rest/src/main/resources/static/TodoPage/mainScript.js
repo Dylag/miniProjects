@@ -4,7 +4,6 @@ let startDatePicker = document.getElementById("startDatePicker")
 let endDatePicker = document.getElementById("endDatePicker")
 
 
-alert('d')
 function addToList(){
 
 
@@ -22,8 +21,8 @@ function addToList(){
             "Content-type":"application/json"
         }
     })
-        .then((respone) => respone.json())
-        .then((json) => {
+        .then(response => response.json())
+        .then(json => {
             newTodo.id = json.id
 
             console.log(newTodo.id)

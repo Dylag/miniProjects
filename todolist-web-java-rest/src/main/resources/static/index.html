@@ -4,39 +4,28 @@
     <title>
         TO-DO list (2)
     </title>
-    <link rel = 'stylesheet' href="stylesheet.css"/>
+    <link rel = 'stylesheet' href="auth/style.css"/>
 </head>
 
 <body>
-<div style="text-align: center">
-    <h1>TO-DO list</h1>
-</div>
 
-<div class="column">
-    <table id = table>
-        <tr>
-            <td class = "idColumn">id</td>
-            <td class = "textColumn">text</td>
-            <td class = "startDateColumn">start date</td>
-            <td class = "endDateColumn">end date</td>
-        </tr>
-    </table>
+    <h1 style="text-align: center">TO-DO list</h1>
 
+    <div class="column">
+        <h1>Registration</h1>
+        <p/><label>Nickname: </label> <input type="text" id="reg_nameInput">
+        <p/><label>Password: </label> <input type="text" id ="reg_passwordInput">
+        <p/><button onclick="registration()">Registration</button>
 
-<!--    <ol id = "list">-->
-
-<!--    </ol>-->
-</div>
-
-<div class="column">
-    <div id = 'userInterface'>
-        <input type="text" id="userInput">
-        <button id="123" onclick="addToList()">add to list</button>
-        <input type="date" id ="startDatePicker">
-        <input type="date" id = "endDatePicker">
     </div>
-</div>
 
-<script src="mainScript.js"></script>
+    <div class="column">
+        <h1>Log in</h1>
+        <p/><label>Name: </label> <input type="text" id ="login_nameInput">
+        <p/><label>Password: </label> <input type="text" id = "login_passwordInput">
+        <p/><button onclick="login()">Log in</button>
+    </div>
+
+<script src="auth/script.js"></script>
 </body>
 </html>
