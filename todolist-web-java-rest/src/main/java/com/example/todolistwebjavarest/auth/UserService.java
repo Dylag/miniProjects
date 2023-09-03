@@ -15,22 +15,22 @@ public class UserService {
         this.db = db;
     }
 
-    public JsonResponse register(User newUser){
+    public String register(User newUser){
         if(db.findByName(newUser.getName()).isPresent())
-            return new JsonResponse( "Nickname is already taken");
+            return "Nickname is already taken";
         db.save(newUser);
-        return new JsonResponse("ok");
+        return "ok";
     }
 
-    public JsonResponse login(User user){
+    public String login(User user){
         Optional<User> possibleUser = db.findByName(user.getName());
         if(db.findByName(user.getName()).isEmpty())
-            return new JsonResponse("No user with this nickname");
+            return "No user with this nickname";
 
         if(!possibleUser.get().getPassword().equals(user.getPassword()))
-            return new JsonResponse("Wrong password");
+            return "Wrong password";
 
-        return new JsonResponse("ok");
+        return "ok";
     }
 
 }

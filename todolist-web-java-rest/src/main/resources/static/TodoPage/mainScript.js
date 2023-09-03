@@ -6,8 +6,6 @@ let endDatePicker = document.getElementById("endDatePicker")
 
 function addToList(){
 
-
-
     let newTodo = {
         txt:userInput.value,
         startdate: startDatePicker.value,
@@ -50,10 +48,6 @@ function addToList(){
             table.appendChild(newRow)
 
         })
-
-
-
-
 }
 
 function removeElement(element){

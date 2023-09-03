@@ -4,6 +4,9 @@ import com.example.todolistwebjavarest.auth.User;
 import com.example.todolistwebjavarest.auth.UserService;
 import com.example.todolistwebjavarest.todo.Todo;
 import com.example.todolistwebjavarest.todo.TodoService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,23 +24,36 @@ public class Controller {
         this.userService = userService;
     }
 
-    @GetMapping
-    public void getReq(){
-
-    }
-
     @PostMapping
     public Todo addTodo(@RequestBody Todo todo){
         return todoService.addTodo(todo);
     }
 
     @PostMapping(path = "/reg")
-    public JsonResponse register(@RequestBody User user){
-        return userService.register(user);
+    public JsonResponse register(@RequestBody User user, HttpServletResponse servletResponse){
+
+        String response = userService.register(user);
+
+        if(response.equals("ok"))
+            servletResponse.addCookie(new Cookie("name",user.getName()));
+
+        return new JsonResponse(response);
     }
 
+    //@CookieValue(value = "username", defaultValue = "Atta"
     @PostMapping(path = "/login")
-    public JsonResponse login(@RequestBody User user){
-        return userService.login(user);
+    public JsonResponse login(@RequestBody User user,HttpServletResponse servletResponse){
+        String response = userService.login(user);
+
+        if(response.equals("ok"))
+            servletResponse.addCookie(new Cookie("name",user.getName()));
+        System.out.println(response);
+        return new JsonResponse(response);
+    }
+
+
+    @GetMapping
+    public JsonResponse getUsername(@CookieValue(value = "name",defaultValue = "no name") String name){
+        return new JsonResponse("hello, " + name);
     }
 }

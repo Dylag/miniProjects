@@ -5,10 +5,17 @@ let login_passwordInput = document.getElementById("login_passwordInput")
 let reg_nameInput = document.getElementById("reg_nameInput")
 let reg_passwordInput = document.getElementById("reg_passwordInput")
 
-function login(){
 
+
+function login(){
     login_nameInput.value = login_nameInput.value.trim()
     login_passwordInput.value = login_passwordInput.value.trim()
+
+    if(login_nameInput.value.indexOf(' ')!==-1){
+        alert('no space in username')
+        return
+    }
+
 
     fetch("http://localhost:8080/todo/login",{
         method: "POST",
@@ -23,15 +30,21 @@ function login(){
     })
         .then(response => response.json())
         .then(json =>{
-            alert(json.text)
+            if(json.text === 'ok')
+                window.location.href= '../TodoPage/TodoPage.html'
+            else
+                alert(json.text)
         })
 }
 
 function registration(){
-
     reg_nameInput.value = reg_nameInput.value.trim()
     reg_passwordInput.value = reg_passwordInput.value.trim()
 
+    if(reg_nameInput.value.indexOf(' ')!==-1){
+        alert('no space in username')
+        return
+    }
 
     fetch("http://localhost:8080/todo/reg", {
         method: "POST",
@@ -44,7 +57,10 @@ function registration(){
         }
     }).then( response => response.json())
         .then(json => {
-            alert(json.text)
+            if(json.text==='ok'){
+                window.location.href= '../TodoPage/TodoPage.html'
+            } else
+                alert(json.text)
         })
 
 }
