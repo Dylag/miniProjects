@@ -5,8 +5,6 @@ let login_passwordInput = document.getElementById("login_passwordInput")
 let reg_nameInput = document.getElementById("reg_nameInput")
 let reg_passwordInput = document.getElementById("reg_passwordInput")
 
-
-
 function login(){
     login_nameInput.value = login_nameInput.value.trim()
     login_passwordInput.value = login_passwordInput.value.trim()
@@ -17,13 +15,12 @@ function login(){
     }
 
 
-    fetch("http://localhost:8080/todo/login",{
+    fetch("http://localhost:8080/todo/auth/login",{
         method: "POST",
         body: JSON.stringify({
-            name:login_nameInput.value,
+            username:login_nameInput.value,
             password: login_passwordInput.value
         }),
-
         headers: {
             "Content-type":"application/json"
         }
@@ -38,6 +35,7 @@ function login(){
 }
 
 function registration(){
+
     reg_nameInput.value = reg_nameInput.value.trim()
     reg_passwordInput.value = reg_passwordInput.value.trim()
 
@@ -46,10 +44,11 @@ function registration(){
         return
     }
 
-    fetch("http://localhost:8080/todo/reg", {
+
+    fetch("http://localhost:8080/todo/auth/reg", {
         method: "POST",
         body: JSON.stringify({
-            name: reg_nameInput.value,
+            username: reg_nameInput.value,
             password: reg_passwordInput.value
         }),
         headers: {

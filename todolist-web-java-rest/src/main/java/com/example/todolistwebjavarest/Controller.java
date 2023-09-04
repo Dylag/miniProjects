@@ -5,7 +5,6 @@ import com.example.todolistwebjavarest.auth.UserService;
 import com.example.todolistwebjavarest.todo.Todo;
 import com.example.todolistwebjavarest.todo.TodoService;
 import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,35 +24,36 @@ public class Controller {
     }
 
     @PostMapping
-    public Todo addTodo(@RequestBody Todo todo){
-        return todoService.addTodo(todo);
+    public Todo addTodo(@RequestBody Todo todo, @CookieValue(name = "username",defaultValue = "no name") String username){
+        if(username.equals("no name"))
+            return new Todo();
+        return todoService.addTodo(todo,username);
     }
 
-    @PostMapping(path = "/reg")
-    public JsonResponse register(@RequestBody User user, HttpServletResponse servletResponse){
+    @PostMapping(path = "/auth/reg")
+    public JsonResponse register(HttpServletResponse servletResponse, @RequestBody User user){
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
 
         String response = userService.register(user);
 
         if(response.equals("ok"))
-            servletResponse.addCookie(new Cookie("name",user.getName()));
+            servletResponse.addCookie(new Cookie("username",user.getUsername()));
+
+
 
         return new JsonResponse(response);
     }
 
     //@CookieValue(value = "username", defaultValue = "Atta"
-    @PostMapping(path = "/login")
+    @PostMapping(path = "/auth/login")
     public JsonResponse login(@RequestBody User user,HttpServletResponse servletResponse){
         String response = userService.login(user);
 
         if(response.equals("ok"))
-            servletResponse.addCookie(new Cookie("name",user.getName()));
+            servletResponse.addCookie(new Cookie("username",user.getUsername()));
         System.out.println(response);
         return new JsonResponse(response);
     }
 
-
-    @GetMapping
-    public JsonResponse getUsername(@CookieValue(value = "name",defaultValue = "no name") String name){
-        return new JsonResponse("hello, " + name);
-    }
 }

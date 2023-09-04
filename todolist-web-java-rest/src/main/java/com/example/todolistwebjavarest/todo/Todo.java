@@ -21,6 +21,11 @@ public class Todo {
     @Column(name = "enddate")
     Date enddate;
 
+
+
+    @Column(name = "user_id")
+    int userId;
+
     public int getId() {
         return id;
     }
@@ -51,5 +56,13 @@ public class Todo {
 
     public void setEnddate(Date enddate) {
         this.enddate = enddate;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
