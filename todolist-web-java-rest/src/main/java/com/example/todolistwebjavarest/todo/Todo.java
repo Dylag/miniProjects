@@ -19,12 +19,10 @@ public class Todo {
     private Date startdate;
 
     @Column(name = "enddate")
-    Date enddate;
-
-
+    private Date enddate;
 
     @Column(name = "user_id")
-    int userId;
+    private int userId;
 
     public int getId() {
         return id;

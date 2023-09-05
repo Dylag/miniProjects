@@ -25,8 +25,11 @@ public class Controller {
 
     @PostMapping
     public Todo addTodo(@RequestBody Todo todo, @CookieValue(name = "username",defaultValue = "no name") String username){
-        if(username.equals("no name"))
+        System.out.println("add todo");
+        if(username.equals("no name")) {
+            System.out.println("no username, returning new Todo()...");
             return new Todo();
+        }
         return todoService.addTodo(todo,username);
     }
 
@@ -47,12 +50,17 @@ public class Controller {
 
     //@CookieValue(value = "username", defaultValue = "Atta"
     @PostMapping(path = "/auth/login")
-    public JsonResponse login(@RequestBody User user,HttpServletResponse servletResponse){
+    public JsonResponse login(HttpServletResponse servletResponse,@RequestBody User user){
         String response = userService.login(user);
 
-        if(response.equals("ok"))
-            servletResponse.addCookie(new Cookie("username",user.getUsername()));
-        System.out.println(response);
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
+
+        if(response.equals("ok")) {
+            System.out.println("adding cookie");
+            servletResponse.addCookie(new Cookie("username", user.getUsername()));
+        }
+
         return new JsonResponse(response);
     }
 

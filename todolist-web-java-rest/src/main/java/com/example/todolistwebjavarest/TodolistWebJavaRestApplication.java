@@ -10,8 +10,6 @@ public class TodolistWebJavaRestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodolistWebJavaRestApplication.class, args);
-
-
 	}
 
 }

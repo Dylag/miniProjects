@@ -11,15 +11,18 @@ public class TodoService {
 
     UserRepository udb;
 
-    TodoService (TodoRepository db){
+    TodoService (TodoRepository db, UserRepository udb){
         this.db = db;
+        this.udb = udb;
     }
 
     public Todo addTodo(Todo newTodo, String username){
-        newTodo.userId = udb.findByName(username).get().getId();
+        System.out.println("add todo from service");
+        newTodo.setUserId(udb.findByName(username).get().getId());
         db.save(newTodo);
-        System.out.println(db.getLastTodo().getTxt());
-        return db.getLastTodo();
+
+        System.out.println(db.getLastTodoByUserId(newTodo.getUserId()).get().getTxt());
+        return db.getLastTodoByUserId(newTodo.getUserId()).get();
     }
 
 }

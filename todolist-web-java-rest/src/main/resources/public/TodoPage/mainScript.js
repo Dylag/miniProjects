@@ -4,6 +4,7 @@ let startDatePicker = document.getElementById("startDatePicker")
 let endDatePicker = document.getElementById("endDatePicker")
 
 
+
 function addToList(){
 
     let newTodo = {
@@ -15,15 +16,15 @@ function addToList(){
     fetch("http://localhost:8080/todo", {
         method: "POST",
         body: JSON.stringify(newTodo),
-        headers:{
-            "Content-type":"application/json"
+        headers: {
+            "Content-type": "application/json"
         }
     })
         .then(response => response.json())
         .then(json => {
             newTodo.id = json.id
 
-            console.log(newTodo.id)
+
 
             let newIdCell = document.createElement('td')
             newIdCell.textContent = newTodo.id
