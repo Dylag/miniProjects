@@ -27,8 +27,10 @@ function login(){
     })
         .then(response => response.json())
         .then(json =>{
-            if(json.text === 'ok')
-                window.location.href= '../TodoPage/TodoPage.html'
+            if(json.text === 'ok') {
+                alert(document.cookie)
+                window.location.href = "../TodoPage/TodoPage.html"
+            }
             else
                 alert(json.text)
         })
@@ -56,13 +58,10 @@ function registration(){
         }
     }).then( response => response.json())
         .then(json => {
-            if(json.text==='ok'){
-                window.location.href= '../TodoPage/TodoPage.html'
-            } else
+            if(json.text==='ok')
+                window.location.href= "../TodoPage/TodoPage.html"
+             else
                 alert(json.text)
         })
 
 }
-
-
-

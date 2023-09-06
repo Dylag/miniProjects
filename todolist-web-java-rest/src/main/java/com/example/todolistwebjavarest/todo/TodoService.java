@@ -7,22 +7,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class TodoService {
 
-    TodoRepository db;
+    TodoRepository todoDB;
 
-    UserRepository udb;
+    UserRepository userDB;
 
     TodoService (TodoRepository db, UserRepository udb){
-        this.db = db;
-        this.udb = udb;
+        this.todoDB = db;
+        this.userDB = udb;
     }
 
     public Todo addTodo(Todo newTodo, String username){
         System.out.println("add todo from service");
-        newTodo.setUserId(udb.findByName(username).get().getId());
-        db.save(newTodo);
+        newTodo.setUserId(userDB.findByName(username).get().getId());
+        todoDB.save(newTodo);
 
-        System.out.println(db.getLastTodoByUserId(newTodo.getUserId()).get().getTxt());
-        return db.getLastTodoByUserId(newTodo.getUserId()).get();
+        System.out.println(todoDB.getLastTodoByUserId(newTodo.getUserId()).get().getTxt());
+        return todoDB.getLastTodoByUserId(newTodo.getUserId()).get();
+    }
+
+    public String deleteTodo(String username, int id){
+        return null;
     }
 
 }

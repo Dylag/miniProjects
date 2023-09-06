@@ -25,7 +25,6 @@ function addToList(){
             newTodo.id = json.id
 
 
-
             let newIdCell = document.createElement('td')
             newIdCell.textContent = newTodo.id
             newIdCell.className = "idColumn"
