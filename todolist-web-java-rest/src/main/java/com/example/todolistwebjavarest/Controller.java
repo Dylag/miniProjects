@@ -78,10 +78,9 @@ public class Controller {
     }
 
     @DeleteMapping
-    public JsonResponse deleteTodo(@CookieValue(name = "username",defaultValue = "noname")
-                                       String username, @RequestParam(name= "id") int id){
-//        todoService.deletTodo(String username, int id);
-        return null;
+    public JsonResponse deleteTodo(@CookieValue(name = "sessionId",defaultValue = "0")
+                                       String sessionId, @RequestParam(name= "id") int todoId){
+        return new JsonResponse(todoService.deleteTodo(UUID.fromString(sessionId), todoId));
     }
 
 

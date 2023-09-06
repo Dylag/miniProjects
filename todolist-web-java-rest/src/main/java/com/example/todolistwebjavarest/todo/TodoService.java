@@ -29,11 +29,18 @@ public class TodoService {
         newTodo.setUserId(userId);
         todoDB.save(newTodo);
 
-        return todoDB.getLastTodoByUserId(userId).get();
+        return todoDB.findLastTodoByUserId(userId).get();
     }
 
-    public String deleteTodo(String username, int id){
-        return null;
+    public String deleteTodo(UUID sessionId, int todoId){
+
+        int user_id = sessionDB.findById(sessionId).get().getUserId();
+        if(sessionDB.findById(sessionId).get().getUserId() == todoDB.findById(todoId).get().getUserId()){
+            todoDB.deleteById(todoId);
+            return "ok";
+        }
+        else
+            return "wrong todoId";
     }
 
 }
