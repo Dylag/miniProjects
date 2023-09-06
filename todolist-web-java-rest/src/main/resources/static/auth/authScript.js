@@ -27,10 +27,9 @@ function login(){
     })
         .then(response => response.json())
         .then(json =>{
-            if(json.text === 'ok') {
-                alert(document.cookie)
+            if(json.text === 'ok')
                 window.location.href = "../TodoPage/TodoPage.html"
-            }
+
             else
                 alert(json.text)
         })

@@ -1,5 +1,6 @@
 package com.example.todolistwebjavarest.session;
 
+import com.example.todolistwebjavarest.auth.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -10,12 +11,18 @@ public class SessionService {
 
     SessionRepository sessionDB;
 
-    SessionService(SessionRepository sessionDB){
+    UserRepository userDB;
+
+    SessionService(SessionRepository sessionDB, UserRepository userDB){
         this.sessionDB = sessionDB;
+        this.userDB = userDB;
     }
 
     public UUID createSession(String username){
-        Session newSession = new Session(username);
+
+        int userId = userDB.findByName(username).get().getId();
+
+        Session newSession = new Session(userId);
         sessionDB.save(newSession);
         return newSession.getId();
     }

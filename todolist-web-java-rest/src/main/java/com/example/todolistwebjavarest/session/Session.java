@@ -16,14 +16,14 @@ public class Session {
     @Column(name="id")
     private UUID id;
 
-    @Column(name= "username")
-    private String username;
+    @Column(name= "user_id")
+    private int userId;
 
     @Column(name = "connecttime")
     private Timestamp connectTime;
 
-    protected Session(String username){
-        this.username = username;
+    protected Session(int userId){
+        this.userId = userId;
         this.id = UUID.randomUUID();
         this.connectTime = new Timestamp(System.currentTimeMillis());
     }
@@ -38,12 +38,11 @@ public class Session {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
-
 }

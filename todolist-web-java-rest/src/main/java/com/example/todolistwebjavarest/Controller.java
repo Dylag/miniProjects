@@ -35,14 +35,15 @@ public class Controller {
 
     //TODO add sessionId handling
     @PostMapping
-    public Todo addTodo(@RequestBody Todo todo){
-        System.out.println("add todo");
+    public Todo addTodo(@RequestBody Todo todo, @CookieValue(value = "sessionId",defaultValue = "0") String sessionId_string){
+
+        return todoService.addTodo(todo,UUID.fromString(sessionId_string));
+
 //        if(username.equals("noname")) {
 //            System.out.println("no username, returning new Todo()...");
 //            return new Todo();
 //        }
 //        return todoService.addTodo(todo,username);
-        return null;
     }
 
 
