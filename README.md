@@ -17,3 +17,4 @@ a web todo app made with both client side (html, css, js) and server side (java,
 - authorizing with sessionId cookie 
 - adding new todos to postgresql database
 - deleting todos
+- sharing todos by usernames
