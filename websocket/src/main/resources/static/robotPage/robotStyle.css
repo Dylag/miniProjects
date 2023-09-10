@@ -1,0 +1,11 @@
+table{
+    //background-color: red;
+    margin: auto;
+}
+tr{
+    height: 100px;
+}
+
+td{
+    width: 100px;
+}
