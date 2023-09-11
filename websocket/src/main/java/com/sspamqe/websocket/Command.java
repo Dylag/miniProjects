@@ -5,6 +5,8 @@ public class Command {
     //cringeeeeeee WTF DAAAAAAMN
     private String command;
 
+    public Command(){}
+
     public Command(String command) {
         this.command = command;
     }

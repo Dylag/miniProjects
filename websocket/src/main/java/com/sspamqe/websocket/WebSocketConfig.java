@@ -13,11 +13,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic");
-        config.setApplicationDestinationPrefixes("/app");
+        config.enableSimpleBroker("/output");//destination for client subscription
+        config.setApplicationDestinationPrefixes("/input");//message receiver destination
     }
 
-    @Override
+    @Override //user should connect here
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/robotCommander");
     }

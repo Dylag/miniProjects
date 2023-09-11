@@ -1,11 +1,11 @@
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://localhost:8080/gs-guide-websocket'
+    brokerURL: 'ws://localhost:8080/robotCommander'
 });
 
 stompClient.onConnect = (frame) => {
     setConnected(true);
     console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/greetings', (greeting) => {
+    stompClient.subscribe('/commandChannel', (greeting) => {
         showGreeting(JSON.parse(greeting.body).content);
     });
 };
@@ -43,7 +43,7 @@ function disconnect() {
 
 function sendName() {
     stompClient.publish({
-        destination: "/app/hello",
+        destination: "/commandThread/receiver",
         body: JSON.stringify({'name': $("#name").val()})
     });
 }

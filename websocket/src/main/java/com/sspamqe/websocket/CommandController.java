@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CommandController {
 
-    @SendTo("/commandThread")
-    public Command sendCommand(@RequestParam String command){
-        return new Command(command);
+
+    @MessageMapping("/command")
+    @SendTo("/command")
+    public Command sendCommand(Command command){
+
+        System.out.println("got command: " + command.getCommand());
+
+        return command;
     }
 
 

@@ -4,5 +4,5 @@ function robotLogin(){
 
 
 function controllerLogin(){
-    document.location.href = ""
+    document.location.href = "controllerPage/controllerPage.html"
 }
