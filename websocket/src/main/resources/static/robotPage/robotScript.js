@@ -23,11 +23,19 @@ table[robotPos[0]][robotPos[1]].style.backgroundColor = robotColor
 
 
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://localhost:8080/robot'
+    brokerURL: 'ws://localhost:8080/robotCommander'
 });
 
 stompClient.onConnect = () => {
-    stompClient.subscribe('/commandsThread', command => doCommand(command));
+
+    console.log("stompClient connected ")
+
+    stompClient.subscribe('/output/command', commandObject => {
+        let obj = JSON.parse(commandObject.body)
+
+        console.log(`got command ${obj.command}`)
+        doCommand(obj.command)
+    });
 };
 
 stompClient.onWebSocketError = (error) => {
@@ -39,8 +47,13 @@ stompClient.onStompError = (frame) => {
     console.error('Additional details: ' + frame.body);
 };
 
+stompClient.activate()
 
 function doCommand(command){
+
+    console.log(`doing command ${command}`)
+
+    let oldPos = robotPos.slice(0,2)
     switch (command){
         case 'left':
             if(robotPos[1] === 0)
@@ -49,7 +62,7 @@ function doCommand(command){
                 robotPos[1]--;
             break
         case 'right':
-            if(robotPos[1] === table[0].length)
+            if(robotPos[1] === table[0].length-1)
                 console.log('rightBorder')
             else
                 robotPos[1]++
@@ -61,7 +74,7 @@ function doCommand(command){
                 robotPos[0]--
             break
         case 'down':
-            if(robotPos[0] === table.length)
+            if(robotPos[0] === table.length-1)
                 console.log('down border')
             else
                 robotPos[0]++;
@@ -69,6 +82,7 @@ function doCommand(command){
         default:
             console.log('incorrect command')
     }
+    table[oldPos[0]][oldPos[1]].style.backgroundColor = ''
     table[robotPos[0]][robotPos[1]].style.backgroundColor = robotColor
 }
 

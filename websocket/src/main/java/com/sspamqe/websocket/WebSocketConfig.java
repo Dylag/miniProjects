@@ -17,7 +17,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         config.setApplicationDestinationPrefixes("/input");//message receiver destination
     }
 
-    @Override //user should connect here
+    @Override //user should connect to this endpoint
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/robotCommander");
     }

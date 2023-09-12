@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CommandController {
 
 
-    @MessageMapping("/command")
-    @SendTo("/command")
+    @MessageMapping("/command") //get from  /input/command
+    @SendTo("/output/command") //send to channel /output/command
     public Command sendCommand(Command command){
 
         System.out.println("got command: " + command.getCommand());
 
-        return command;
+        return new Command(command.getCommand());
     }
-
-
 }
