@@ -8,7 +8,7 @@ just a simple todo list powered by html, css, js
 **Feautures**
 - adding new todos
 - deleting todos by id
-# todo list web-java-rest (now moved to a [separate repo](https://github.com/Dylag/todolist-web-java-rest))
+# todo list web-java-rest (now moved to a [new repo](https://github.com/Dylag/todolist-web-java-rest))
 
 a web todo app made with both client side (html, css, js) and server side (java, spring, rest api, postgresql) 
 
